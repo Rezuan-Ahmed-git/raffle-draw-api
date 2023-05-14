@@ -9,6 +9,7 @@ const {
   updateByUsername,
   deleteById,
   deleteByUsername,
+  drawWinners,
 } = require('./controllers');
 
 // router.get('/t/:id');
@@ -28,7 +29,7 @@ router
   .delete(deleteByUsername);
 
 router.post('/bulk', sellBulkTicket);
-router.get('/draw');
+router.get('/draw', drawWinners);
 
 // router.post('/');
 // router.get('/');
