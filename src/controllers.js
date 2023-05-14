@@ -62,3 +62,23 @@ exports.updateByUsername = (req, res) => {
 
   res.status(200).json({ items: tickets, total: tickets.length });
 };
+
+//delete controllers
+
+exports.deleteById = (req, res) => {
+  const id = req.params.id;
+  const isDeleted = ticketCollection.deleteById(id);
+
+  if (isDeleted) {
+    return res.status(204).send();
+  }
+
+  res.status(400).json({ message: 'Delete operation failed' });
+};
+
+exports.deleteByUsername = (req, res) => {
+  const username = req.params.username;
+  ticketCollection.deleteBulk(username);
+
+  res.status(204).send();
+};
